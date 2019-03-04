@@ -1,0 +1,31 @@
+{% templatetag openblock %} load staticfiles {% templatetag closeblock %}<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }} | Referentieimplementatie{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="{% templatetag openblock %} static 'css/font-awesome.min.css' %}" media="screen" rel="stylesheet" />
+        <link href="{% templatetag openblock %} static 'css/screen.css' %}" media="screen" rel="stylesheet" />
+        {% templatetag openblock %} block extra_css {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+        <link rel="shortcut icon" href="{% templatetag openblock %} static 'ico/favicon.png' {% templatetag closeblock %}">
+    </head>
+
+    <body class="{% templatetag openblock %} block body-class {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}">
+
+        <main class="content">
+            <header class="page-header">
+                <img class="page-header__logo" src="{% templatetag openblock %} static 'img/vng.svg' {% templatetag closeblock %}">
+                <h1 class="page-header__title">{{ project_name }}</h1>
+            </header>
+
+
+            {% templatetag openblock %} block content {% templatetag closeblock %}
+                Override <code>{% templatetag openblock %} verbatim {% templatetag closeblock %}{% templatetag openblock %} block content {% templatetag closeblock %}{% templatetag openblock %} endverbatim {% templatetag closeblock %}</code>
+                to get some actual content.
+            {% templatetag openblock %} endblock {% templatetag closeblock %}
+        </main>
+    </body>
+</html>

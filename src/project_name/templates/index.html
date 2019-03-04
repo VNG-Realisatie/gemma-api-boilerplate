@@ -1,0 +1,15 @@
+{% templatetag openblock %} extends "master.html" {% templatetag closeblock %}
+{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block content {% templatetag closeblock %}
+<article class="index">
+
+    <a href="{% templatetag openblock %} url 'schema-redoc' version=1 {% templatetag closeblock %}" class="link-block">API spec</a>
+
+    <a href="{% templatetag openblock %} url 'zds_schema:scopes' {% templatetag closeblock %}" class="link-block">API scopes</a>
+
+    <a href="{% templatetag openblock %} url 'admin:index' {% templatetag closeblock %}" class="link-block">admin</a>
+
+</article>
+{% templatetag openblock %} endblock {% templatetag closeblock %}

@@ -1,0 +1,55 @@
+---
+
+# Deployment
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: postgres-{{ project_name|lower }}
+  namespace: gemma
+  labels:
+    k8s-app: postgres-{{ project_name|lower }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: postgres-{{ project_name|lower }}
+  template:
+    metadata:
+      name: postgres-{{ project_name|lower }}
+      labels:
+        k8s-app: postgres-{{ project_name|lower }}
+    spec:
+      volumes:
+      - name: data
+        hostPath:
+          path: "/storage/gemma-postgres-{{ project_name|lower }}"
+          type: ''
+      containers:
+      - name: postgres
+        image: postgres:11
+        env:
+          - name: POSTGRES_PASSWORD
+            value: <REDACTED>
+        volumeMounts:
+          - name: data
+            mountPath: "/var/lib/postgresql/data"
+
+---
+
+# Service
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-{{ project_name|lower }}
+  namespace: gemma
+  labels:
+    k8s-app: postgres-{{ project_name|lower }}
+spec:
+  selector:
+    k8s-app: postgres-{{ project_name|lower }}
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
