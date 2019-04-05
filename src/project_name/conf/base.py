@@ -2,6 +2,8 @@ import os
 
 from .api import *  # noqa
 
+SITE_ID = int(os.getenv('SITE_ID', 1))
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 DJANGO_PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 BASE_DIR = os.path.abspath(os.path.join(DJANGO_PROJECT_DIR, os.path.pardir, os.path.pardir))
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
 
     # Note: If enabled, at least one Site object is required
-    # 'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -51,7 +53,8 @@ INSTALLED_APPS = [
     'axes',
     'django_filters',
     'corsheaders',
-    'zds_schema',  # before drf_yasg to override the management command
+    'vng_api_common',  # before drf_yasg to override the management command
+    'vng_api_common.notifications',
     'drf_yasg',
     'rest_framework',
     'django_markup',
@@ -70,12 +73,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'zds_schema.middleware.AuthMiddleware',
+    'vng_api_common.middleware.AuthMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'corsheaders.middleware.CorsMiddleware',
-    'zds_schema.middleware.APIVersionHeaderMiddleware',
+    'vng_api_common.middleware.APIVersionHeaderMiddleware',
 ]
 
 ROOT_URLCONF = '{{ project_name|lower }}.urls'

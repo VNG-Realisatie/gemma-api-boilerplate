@@ -1,16 +1,16 @@
 pip-tools
-psycopg2-binary
+psycopg2
 python-dotenv
 pytz
 raven
 markdown
 uwsgi
 
-Django
+Django<2.2
 django-axes
 django-choices
 django-cors-middleware
 django-markup
 
 djangorestframework
-zds-schema
+vng-api-common[notifications]
