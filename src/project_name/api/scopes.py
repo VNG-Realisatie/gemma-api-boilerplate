@@ -8,10 +8,10 @@ https://wiki.exxellence.nl/display/KPORT/2.+Zaaktype+autorisaties
 from vng_api_common.scopes import Scope
 
 EXAMPLE_SCOPE = Scope(
-    'zds.scopes.domain.example',
+    "zds.scopes.domain.example",
     description="""
 **Laat toe om**:
 
 * ...
-"""
+""",
 )
