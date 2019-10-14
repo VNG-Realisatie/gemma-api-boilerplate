@@ -1,7 +1,7 @@
 import logging
 
 from rest_framework import viewsets
-from vng_api_common.permissions import ActionScopesRequired
+from vng_api_common.permissions import BaseAuthRequired
 
 from .scopes import EXAMPLE_SCOPE
 from .serializers import ExampleSerializer
@@ -29,7 +29,7 @@ class ExampleViewSet(viewsets.ModelViewSet):
     serializer_class = ExampleSerializer
     lookup_field = 'uuid'
 
-    permission_classes = (ActionScopesRequired,)
+    permission_classes = (BaseAuthRequired,)
     required_scopes = {
         'list': EXAMPLE_SCOPE,
         'retrieve': EXAMPLE_SCOPE,
