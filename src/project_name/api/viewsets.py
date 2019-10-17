@@ -1,7 +1,7 @@
 import logging
 
 from rest_framework import viewsets
-from vng_api_common.permissions import ActionScopesRequired
+from vng_api_common.permissions import BaseAuthRequired
 
 from .scopes import EXAMPLE_SCOPE
 from .serializers import ExampleSerializer
@@ -25,16 +25,17 @@ class ExampleViewSet(viewsets.ModelViewSet):
     destroy:
     Describe destroy operation.
     """
+
     queryset = ...
     serializer_class = ExampleSerializer
-    lookup_field = 'uuid'
+    lookup_field = "uuid"
 
-    permission_classes = (ActionScopesRequired,)
+    permission_classes = (BaseAuthRequired,)
     required_scopes = {
-        'list': EXAMPLE_SCOPE,
-        'retrieve': EXAMPLE_SCOPE,
-        'create': EXAMPLE_SCOPE,
-        'update': EXAMPLE_SCOPE,
-        'partial_update': EXAMPLE_SCOPE,
-        'destroy': EXAMPLE_SCOPE,
+        "list": EXAMPLE_SCOPE,
+        "retrieve": EXAMPLE_SCOPE,
+        "create": EXAMPLE_SCOPE,
+        "update": EXAMPLE_SCOPE,
+        "partial_update": EXAMPLE_SCOPE,
+        "destroy": EXAMPLE_SCOPE,
     }

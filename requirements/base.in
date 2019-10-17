@@ -1,6 +1,7 @@
 pip-tools
 psycopg2
 python-dotenv
+python-dateutil
 pytz
 raven
 markdown
